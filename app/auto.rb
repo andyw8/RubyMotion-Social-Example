@@ -24,7 +24,7 @@ class Auto
           # This example uses version 1 of the Twitter API.
           # This may need to be changed to whichever version is currently appropriate.
 
-          url = NSURL.URLWithString "http://api.twitter.com/1/statuses/update.json"
+          url = NSURL.URLWithString "http://api.twitter.com/1.1/statuses/update.json"
           params = { status: "Test post from iOS" }
           post_request = TWRequest.alloc.initWithURL url, parameters:params, requestMethod:TWRequestMethodPOST
 
