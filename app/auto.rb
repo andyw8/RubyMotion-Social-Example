@@ -1,4 +1,4 @@
-class Auth
+class Auto
   def initialize
     # Create an account store object.
     @account_store = ACAccountStore.alloc.init

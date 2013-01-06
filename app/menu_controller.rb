@@ -43,6 +43,6 @@ class MenuController < UITableViewController
   end
 
   def sign_in
-    @auth = Auth.new
+    @auto = Auto.new
   end
 end
