@@ -5,5 +5,5 @@ require 'motion/project'
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'RM Social'
-  app.frameworks += ['Social', 'Accounts', 'Twitter']
+  app.frameworks += ['Social', 'Twitter']
 end
