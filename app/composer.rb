@@ -1,6 +1,6 @@
 class Composer
-  def initialize(owner)
-    service = SLServiceTypeTwitter
+  def initialize(owner, service)
+    service = services.fetch service
 
     if SLComposeViewController.isAvailableForServiceType service
       @controller = SLComposeViewController.composeViewControllerForServiceType service
@@ -23,5 +23,15 @@ class Composer
     else
       NSLog "Unavailable"
     end
+  end
+
+  private
+
+  def services
+    {
+      'Twitter' => SLServiceTypeTwitter,
+      'Facebook' => SLServiceTypeFacebook,
+      'Sina Weibo' => SLServiceTypeSinaWeibo
+    }
   end
 end
