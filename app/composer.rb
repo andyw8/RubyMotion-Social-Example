@@ -1,5 +1,5 @@
 class Composer
-  def initialize(owner, service)
+  def initialize(owner, service, initial_text)
     service = services.fetch service
 
     if SLComposeViewController.isAvailableForServiceType service
@@ -14,7 +14,7 @@ class Composer
         @controller.dismissViewControllerAnimated true, completion:nil
       end
 
-      result = @controller.setInitialText "Test post from RubyMotion"
+      result = @controller.setInitialText initial_text
       unless result
         NSLog "Failure when setting initial text"
       end

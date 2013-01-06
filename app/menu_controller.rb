@@ -38,7 +38,7 @@ class MenuController < UITableViewController
   private
 
   def compose(service)
-    @composer = Composer.new self, service
+    @composer = Composer.new self, service, "Test post from RubyMotion"
   end
 
   def auto
