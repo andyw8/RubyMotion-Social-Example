@@ -7,7 +7,8 @@ class Auto
     @account_type = @account_store.accountTypeWithAccountTypeIdentifier ACAccountTypeIdentifierTwitter
 
     # Request access from the user to use their Twitter accounts.
-    @account_store.requestAccessToAccountsWithType @account_type, withCompletionHandler: lambda { |granted, error|
+    options = nil # required for some account types but not Twitter
+    @account_store.requestAccessToAccountsWithType @account_type, options:options, completion: lambda { |granted, error|
       if granted
         # Get the list of Twitter accounts.
         accounts = @account_store.accountsWithAccountType @account_type
