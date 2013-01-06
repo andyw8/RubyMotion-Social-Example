@@ -1,11 +1,12 @@
 class MenuController < UITableViewController
   def viewDidLoad
     super
-    @options = []
-    @options << "Post to Twitter"
-    @options << "Post to Facebook"
-    @options << "Post to Sina Weibo"
-    @options << "Auto-post to Twitter"
+    @options = [
+      "Post to Twitter",
+      "Post to Facebook",
+      "Post to Sina Weibo",
+      "Auto-post to Twitter"
+    ]
     self.title = "Social"
   end
 
@@ -14,11 +15,9 @@ class MenuController < UITableViewController
   end
 
   def tableView(tableView, cellForRowAtIndexPath:indexPath)
-    cellIdentifier = self.class.name
-    cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
-    cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:cellIdentifier)
-    cell.textLabel.text = @options[indexPath.row]
-    cell
+    UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:nil).tap do |cell|
+      cell.textLabel.text = @options[indexPath.row]
+    end
   end
 
   def tableView(tableView, didSelectRowAtIndexPath:indexPath)
@@ -30,7 +29,7 @@ class MenuController < UITableViewController
     when 2
       compose 'Sina Weibo'
     when 3
-      sign_in
+      auto
     else
       raise
     end
@@ -42,7 +41,7 @@ class MenuController < UITableViewController
     @composer = Composer.new self, service
   end
 
-  def sign_in
+  def auto
     @auto = Auto.new
   end
 end
