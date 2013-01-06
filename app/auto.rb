@@ -31,22 +31,22 @@ class Auto
         NSLog "Not Granted"
         case error_ptr.code
         when ACErrorUnknown
-          NSLog "Unknown error"
+          NSLog "Error Unknown"
         when ACErrorAccountMissingRequiredProperty
-          NSLog "Account Missing Required Property"
+          NSLog "Account missing required property"
         when ACErrorAccountAuthenticationFailed
-          NSLog "Account Authentication Failed"
+          NSLog "Account authentication failed"
         when ACErrorAccountTypeInvalid
-          NSLog "Account Type Invalid"
+          NSLog "Account type invalid"
         when ACErrorAccountAlreadyExists
-          NSLog "Account Already Exists"
+          NSLog "Account already exists"
         when ACErrorAccountNotFound
           # Occurs if the user has no accounts set up of the particular type
-          NSLog "Account Not Found"
+          NSLog "Account not found"
         when ACErrorPermissionDenied
           NSLog "User denied permission"
         when ACErrorAccessInfoInvalid
-          NSLog "Access Info Invalid"
+          NSLog "Access info invalid"
         else
           NSLog "Unknown error code"
         end
