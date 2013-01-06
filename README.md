@@ -4,6 +4,6 @@ This is an example of using the iOS 6 Social.framework with RubyMotion to compos
 
 There's also a demonstration of how to programatically post a message via Twitter using the Accounts and Twitter framework. It uses the current Twitter API (v1.1).
 
-It illustrates how to show the message composer, and also how to send a message automatically.
+The code partly adapted from Apple's [Tweeting sample code](http://developer.apple.com/library/ios/#samplecode/Tweeting/Introduction/Intro.html).
 
-I was surprised to discover that iOS6 doesn't prompt for authorisation before progrmatically sending a message.
+I was surprised to discover that iOS6 doesn't prompt for authorisation before programatically sending a message (at least in the simulator).
