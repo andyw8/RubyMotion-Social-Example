@@ -3,7 +3,10 @@ class Auto
     @type = type
     @account_store = ACAccountStore.alloc.init
     @account_type = @account_store.accountTypeWithAccountTypeIdentifier type
+  end
 
+  def post_status(status)
+    @status = status
     error_ptr = Pointer.new(:object)
     @account_store.requestAccessToAccountsWithType @account_type, options:options, completion: lambda { |granted, error_ptr|
       if granted
@@ -17,8 +20,8 @@ class Auto
         # Grab the initial Twitter account to tweet from.
         account = accounts.first
 
-        params = { status: "@andyw8 Test post from iOS" }
         url = NSURL.URLWithString "https://api.twitter.com/1.1/statuses/update.json"
+        params = { status: @status }
         post_request = TWRequest.alloc.initWithURL url, parameters:params, requestMethod:TWRequestMethodPOST
 
         post_request.account = account

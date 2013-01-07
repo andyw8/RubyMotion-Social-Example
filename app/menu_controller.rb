@@ -49,5 +49,6 @@ class MenuController < UITableViewController
 
   def auto(type)
     @auto = Auto.new(type)
+    @auto.post_status "@andyw8 Test post from iOS #{Time.now}"
   end
 end
