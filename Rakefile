@@ -5,5 +5,6 @@ require 'motion/project'
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'RM Social'
+  app.identifier = "com.andywaite.rubymotion-social-example"
   app.frameworks += ['Social', 'Twitter']
 end

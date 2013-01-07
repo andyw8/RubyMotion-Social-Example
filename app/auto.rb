@@ -38,9 +38,12 @@ class Auto
   end
 
   def options
-    case @type
-    when ACAccountTypeIdentifierFacebook
-      raise "See Apple docs for options"
+    if @type == ACAccountTypeIdentifierFacebook
+      {
+        ACFacebookAppIdKey: 142117789275997,
+        CFacebookPermissionsKey: ["email", "publish_stream"],
+        ACFacebookAudienceKey: ACFacebookAudienceOnlyMe
+      }
     else # only Facebook needs options
       nil
     end
