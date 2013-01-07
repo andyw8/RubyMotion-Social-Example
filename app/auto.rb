@@ -17,8 +17,8 @@ class Auto
         # Grab the initial Twitter account to tweet from.
         account = accounts.first
 
-        url = NSURL.URLWithString "http://api.twitter.com/1.1/statuses/update.json"
         params = { status: "@andyw8 Test post from iOS" }
+        url = NSURL.URLWithString "https://api.twitter.com/1.1/statuses/update.json"
         post_request = TWRequest.alloc.initWithURL url, parameters:params, requestMethod:TWRequestMethodPOST
 
         post_request.account = account
