@@ -41,9 +41,9 @@ class Auto
   def options
     if @type == ACAccountTypeIdentifierFacebook
       {
-        ACFacebookAppIdKey: 142117789275997,
-        CFacebookPermissionsKey: ["email", "publish_stream"],
-        ACFacebookAudienceKey: ACFacebookAudienceOnlyMe
+        ACFacebookAppIdKey => '142117789275997',
+        ACFacebookPermissionsKey => ["email", "publish_stream"],
+        ACFacebookAudienceKey => ACFacebookAudienceOnlyMe
       }
     else # only Facebook needs options
       nil
