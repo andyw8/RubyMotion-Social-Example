@@ -32,7 +32,7 @@ class Auto
           NSLog "HTTP response status: #{url_response.statusCode}"
         }
       else
-        NSLog "Not Granted"
+        @owner.show_error "Not Granted"
         handle_error error_ptr
       end
     }
