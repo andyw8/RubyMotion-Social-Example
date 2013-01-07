@@ -1,6 +1,7 @@
 class Auto
-  def initialize(type)
+  def initialize(type, owner)
     @type = type
+    @owner = owner
     @account_store = ACAccountStore.alloc.init
     @account_type = @account_store.accountTypeWithAccountTypeIdentifier type
   end
@@ -50,26 +51,28 @@ class Auto
   end
 
   def handle_error(error_ptr)
+     NSLog "*0"
     case error_ptr.code
     when ACErrorUnknown
-      NSLog "Error Unknown"
+      @owner.show_error "Error Unknown"
     when ACErrorAccountMissingRequiredProperty
-      NSLog "Account missing required property"
+      @owner.show_error "Account missing required property"
     when ACErrorAccountAuthenticationFailed
-      NSLog "Account authentication failed"
+      @owner.show_error "Account authentication failed"
     when ACErrorAccountTypeInvalid
-      NSLog "Account type invalid"
+      @owner.show_error "Account type invalid"
     when ACErrorAccountAlreadyExists
-      NSLog "Account already exists"
+      @owner.show_error "Account already exists"
     when ACErrorAccountNotFound
       # Occurs if the user has no accounts set up of the particular type
-      NSLog "Account not found"
+      @owner.show_error "Account not found"
     when ACErrorPermissionDenied
-      NSLog "User denied permission"
+      @owner.show_error "User denied permission"
     when ACErrorAccessInfoInvalid
-      NSLog "Access info invalid"
+      # This may indicate you haven't properly configured the app on Facebook
+      @owner.show_error "Access info invalid"
     else
-      NSLog "Unknown error code"
+      @owner.show_error "Unknown error code"
     end
   end
 end

@@ -10,6 +10,8 @@ class MenuController < UITableViewController
       "Auto-post to Sina Weibo"
     ]
     self.title = "Social"
+    # If I don't show an alert here, when I first try to do so later there's a crash. Can't figure out why.
+    show_error 'Welcome'
   end
 
   def tableView(tableView, numberOfRowsInSection:section)
@@ -41,6 +43,15 @@ class MenuController < UITableViewController
     end
   end
 
+  def show_error(message)
+    alert = UIAlertView.alloc.initWithTitle("Error",
+      message: message,
+      delegate: self,
+      cancelButtonTitle: "OK",
+      otherButtonTitles:nil)
+    alert.show
+  end
+
   private
 
   def compose(service)
@@ -48,7 +59,8 @@ class MenuController < UITableViewController
   end
 
   def auto(type)
-    @auto = Auto.new(type)
+    # pass a reference to the current view controller so we can display error alerts
+    @auto = Auto.new(type, self)
     @auto.post_status "@andyw8 Test post from iOS #{Time.now}"
   end
 end
