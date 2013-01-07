@@ -11,3 +11,5 @@ I was surprised to discover that iOS6 doesn't prompt for authorisation before pr
 ## To Do
 
 * Credential Renewal
+* Get Facebook auto-post working (currently fails with ACErrorAccessInfoInvalid)
+* Test with Sina Weibo
