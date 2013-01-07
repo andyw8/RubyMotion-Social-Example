@@ -51,7 +51,6 @@ class Auto
   end
 
   def handle_error(error_ptr)
-     NSLog "*0"
     case error_ptr.code
     when ACErrorUnknown
       @owner.show_error "Error Unknown"
