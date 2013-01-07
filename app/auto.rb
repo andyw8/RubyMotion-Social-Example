@@ -1,9 +1,9 @@
 class Auto
-  def initialize
+  def initialize(type)
+    @type = type
     @account_store = ACAccountStore.alloc.init
-    @account_type = @account_store.accountTypeWithAccountTypeIdentifier ACAccountTypeIdentifierTwitter
+    @account_type = @account_store.accountTypeWithAccountTypeIdentifier type
 
-    options = nil # required for some account types but not Twitter
     error_ptr = Pointer.new(:object)
     @account_store.requestAccessToAccountsWithType @account_type, options:options, completion: lambda { |granted, error_ptr|
       if granted
@@ -18,7 +18,7 @@ class Auto
         account = accounts.first
 
         url = NSURL.URLWithString "http://api.twitter.com/1.1/statuses/update.json"
-        params = { status: "Test post from iOS" }
+        params = { status: "@andyw8 Test post from iOS" }
         post_request = TWRequest.alloc.initWithURL url, parameters:params, requestMethod:TWRequestMethodPOST
 
         post_request.account = account
@@ -32,6 +32,15 @@ class Auto
         handle_error error_ptr
       end
     }
+  end
+
+  def options
+    case @type
+    when ACAccountTypeIdentifierFacebook
+      raise "See Apple docs for options"
+    else # only Facebook needs options
+      nil
+    end
   end
 
   def handle_error(error_ptr)

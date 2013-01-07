@@ -2,10 +2,12 @@ class MenuController < UITableViewController
   def viewDidLoad
     super
     @options = [
-      "Post to Twitter",
-      "Post to Facebook",
-      "Post to Sina Weibo",
-      "Auto-post to Twitter"
+      "Compose Twitter post",
+      "Compose Facebook post",
+      "Compose Sina Weibo post",
+      "Auto-post to Twitter",
+      "Auto-post to Facebook",
+      "Auto-post to Sina Weibo"
     ]
     self.title = "Social"
   end
@@ -29,7 +31,11 @@ class MenuController < UITableViewController
     when 2
       compose 'Sina Weibo'
     when 3
-      auto
+      auto ACAccountTypeIdentifierTwitter
+    when 4
+      auto ACAccountTypeIdentifierFacebook
+    when 5
+      auto ACAccountTypeIdentifierSinaWeibo
     else
       raise
     end
@@ -41,7 +47,7 @@ class MenuController < UITableViewController
     @composer = Composer.new self, service, "Test post from RubyMotion"
   end
 
-  def auto
-    @auto = Auto.new
+  def auto(type)
+    @auto = Auto.new(type)
   end
 end
