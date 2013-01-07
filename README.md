@@ -7,3 +7,7 @@ There's also a demonstration of how to programatically post a message via Twitte
 The code partly adapted from Apple's [Tweeting sample code](http://developer.apple.com/library/ios/#samplecode/Tweeting/Introduction/Intro.html).
 
 I was surprised to discover that iOS6 doesn't prompt for authorisation before programatically sending a message (at least in the simulator).
+
+## To Do
+
+* Credential Renewal
